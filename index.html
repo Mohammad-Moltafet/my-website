@@ -76,6 +76,7 @@
                 <ul>
                     <li onclick="showHome()">Home</li>
                     <li onclick="showAboutMe()">About me</li>
+                    <li onclick="showJournals()">Journals</li>
                     <li onclick="window.location.href='https://scholar.google.com/citations?user=ksSr5bMAAAAJ&hl=en'">Google Scholar</li>
                     <li onclick="window.location.href='https://www.researchgate.net/profile/Mohammad-Moltafet'">Research Gate</li>
                 </ul>
@@ -127,17 +128,34 @@
                         the University of California at Santa Cruz, USA.</p>
                 </div>
             </div>
+            <div id="journals-section" class="section" style="display: none;">
+                <div class="section-title">Mohammad Moltafet-Journals</div>
+                <hr> <!-- Horizontal line -->
+                <div class="secondary-info">
+                    <p>3-Paper 3</p>
+                    <p>2-Paper 2</p>
+                    <p>1-Paper 1</p>
+                </div>
+            </div>
         </div>
     </div>
     <script>
         function showHome() {
             document.getElementById('home-section').style.display = 'block';
             document.getElementById('about-me-section').style.display = 'none';
+            document.getElementById('journals-section').style.display = 'none';
         }
 
         function showAboutMe() {
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('about-me-section').style.display = 'block';
+            document.getElementById('journals-section').style.display = 'none';
+        }
+
+        function showJournals() {
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('about-me-section').style.display = 'none';
+            document.getElementById('journals-section').style.display = 'block';
         }
     </script>
 </body>
