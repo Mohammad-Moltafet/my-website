@@ -5,67 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Moltafet</title>
     <style>
-        body {
-            font-family: Times New Roman, Times, serif;
-            margin: 0;
-            padding: 0;
-            font-size: 18px;
-        }
-        #container {
-            display: flex;
-            width: 100%;
-        }
-        #sidebar {
-           background-color: lightgray;
-            width: 15%; /* Approximately 1/8 of the total width */
-            padding: 20px;
-        }
-        #main-content {
-            background-color: LightSkyBlue;
-            width: 85%; /* Approximately 7/8 of the total width */
-            padding: 20px;
-        }
-        .section {
-            margin-bottom: 20px;
-            padding-bottom: 20px; /* Add padding at the bottom of sections */
-        }
-        .section-title {
-            font-size: 19px; 
-            font-weight: bold;
-            border-bottom: 2px solid black; /* Add border line under section titles */
-            padding-bottom: 5px; /* Adjust space between title and border */
-            color: Bright Blue; /* Black color for section titles */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
-        
-        ul li {
-            color: Black; /* Cornflower blue color for list items */
-            cursor: pointer; /* Change cursor to pointer on hover */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-            font-size: 18px; /* Smaller font size for secondary information */
-        }
-        .personal-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px; /* Add space between photo and section title */
-            margin-top: 2px; /* Add space between photo and line */
-        }
-        .personal-info img {
-            width: 100px; /* Adjust figure size as needed */
-            margin-right: 20px; /* Add space between photo and text */
-        }
-        .secondary-info {
-            font-size: 18px; /* Smaller font size for secondary information */
-            color: black; /* Black color for secondary information */
-             margin-top: -1px; /* Reduce line spacing */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
-        .about-me-content {
-            margin-top: 20px; /* Add space between title and content */
-            ont-size: 16px; /* Smaller font size for secondary information */
-            color: black; /* Black color for secondary information */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
+        /* Your CSS styles here */
     </style>
 </head>
 <body>
@@ -76,57 +16,23 @@
                 <ul>
                     <li onclick="showHome()">Home</li>
                     <li onclick="showAboutMe()">About me</li>
-                    <li onclick="showJournals()">Journals</li>
-                    <li onclick="window.location.href='https://scholar.google.com/citations?user=ksSr5bMAAAAJ&hl=en'">Google Scholar</li>
-                    <li onclick="window.location.href='https://www.researchgate.net/profile/Mohammad-Moltafet'">Research Gate</li>
                 </ul>
             </div>
             <div class="section" id="publication-section">
                 <div class="section-title">Publications</div>
                 <ul>
-                    <li>Journals</li>                    
-                    <li>Conferences</li>
-                    <li>Book chapter</li>
+                    <li onclick="showJournals()">Journals</li>                    
+                    <li onclick="showConferences()">Conferences</li>
+                    <li onclick="showBookChapter()">Book Chapter</li>
                 </ul>
             </div>
         </div>
         <div id="main-content">
             <div id="home-section" class="section">
-                <div class="section-title">Mohammad Moltafet</div>
-                <hr> <!-- Horizontal line -->
-                <div class="personal-info">
-                    <img src="Mohammad_Moltafet.jpg" alt="Mohammad Moltafet">
-                    <div>
-                     <p style="Times New Roman, Times, serif;">
-                        Postdoctoral Researcher<br>
-                        Department of Electrical and Computer Engineering<br>
-                        University of California Santa Cruz<br>
-                        Phone: +18315295887<br>
-                        E-mail: mmoltafe@ucsc.edu
-                    </p>
-                    </div>
-                </div>
-                <div class="section" id="research-section">
-                    <div class="section-title">Research</div>
-                    <ul>
-                        <li>Semantic Communications</li>
-                        <li>Security</li>
-                        <li>Information Freshness</li>
-                        <li>Stochastic Optimization</li>
-                        <li>Machine Learning for Wireless Communication Applications</li>
-                    </ul>
-                </div>
+                <!-- Home section content -->
             </div>
             <div id="about-me-section" class="section" style="display: none;">
-                <div class="section-title">Mohammad Moltafet - About me</div>
-                <hr> <!-- Horizontal line -->
-                <div class="about-me-content">
-                    <p style="Times New Roman, Times, serif;">I received the M.Sc. degree (Ranked 1st) in communications engineering from Tarbiat Modares University, 
-                        Tehran, Iran, in 2016, and the Ph.D. degree in communications engineering from the University of Oulu, Finland, in 2021. I was a 
-                        Visiting Ph.D. Researcher at Linköping University, Sweden, in 2019, and a Postdoctoral Researcher at the University of Oulu, 
-                        and the Technical University of Munich, Germany, in 2021 and 2022, respectively. Currently, I am a Postdoctoral Researcher at 
-                        the University of California at Santa Cruz, USA.</p>
-                </div>
+                <!-- About me section content -->
             </div>
             <div id="journals-section" class="section" style="display: none;">
                 <div class="section-title">Mohammad Moltafet-Journals</div>
@@ -137,6 +43,20 @@
                     <p>1-Paper 1</p>
                 </div>
             </div>
+            <div id="conferences-section" class="section" style="display: none;">
+                <div class="section-title">Mohammad Moltafet-Conferences</div>
+                <hr> <!-- Horizontal line -->
+                <div class="secondary-info">
+                    <!-- Conference content here -->
+                </div>
+            </div>
+            <div id="book-chapter-section" class="section" style="display: none;">
+                <div class="section-title">Mohammad Moltafet-Book Chapter</div>
+                <hr> <!-- Horizontal line -->
+                <div class="secondary-info">
+                    <!-- Book chapter content here -->
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -144,18 +64,40 @@
             document.getElementById('home-section').style.display = 'block';
             document.getElementById('about-me-section').style.display = 'none';
             document.getElementById('journals-section').style.display = 'none';
+            document.getElementById('conferences-section').style.display = 'none';
+            document.getElementById('book-chapter-section').style.display = 'none';
         }
 
         function showAboutMe() {
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('about-me-section').style.display = 'block';
             document.getElementById('journals-section').style.display = 'none';
+            document.getElementById('conferences-section').style.display = 'none';
+            document.getElementById('book-chapter-section').style.display = 'none';
         }
 
         function showJournals() {
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('about-me-section').style.display = 'none';
             document.getElementById('journals-section').style.display = 'block';
+            document.getElementById('conferences-section').style.display = 'none';
+            document.getElementById('book-chapter-section').style.display = 'none';
+        }
+
+        function showConferences() {
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('about-me-section').style.display = 'none';
+            document.getElementById('journals-section').style.display = 'none';
+            document.getElementById('conferences-section').style.display = 'block';
+            document.getElementById('book-chapter-section').style.display = 'none';
+        }
+
+        function showBookChapter() {
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('about-me-section').style.display = 'none';
+            document.getElementById('journals-section').style.display = 'none';
+            document.getElementById('conferences-section').style.display = 'none';
+            document.getElementById('book-chapter-section').style.display = 'block';
         }
     </script>
 </body>
