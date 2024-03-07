@@ -55,6 +55,9 @@
             color: black; /* Black color for secondary information */
             margin-top: -10px; /* Reduce line spacing */
         }
+        .about-me-content {
+            margin-top: 20px; /* Add space between title and content */
+        }
     </style>
 </head>
 <body>
@@ -63,6 +66,7 @@
             <div class="section">
                 <div class="section-title">Mohammad Moltafet</div>
                 <ul>
+                    <li onclick="showAboutMe()">About me</li>
                     <li onclick="window.location.href='https://scholar.google.com/citations?user=ksSr5bMAAAAJ&hl=en'">Google Scholar</li>
                     <li onclick="window.location.href='https://www.researchgate.net/profile/Mohammad-Moltafet'">Research Gate</li>
                 </ul>
@@ -77,6 +81,13 @@
             </div>
         </div>
         <div id="main-content">
+            <div id="about-me-section" class="section" style="display: none;">
+                <div class="section-title">Mohammad Moltafet - About me</div>
+                <hr> <!-- Horizontal line -->
+                <div class="about-me-content">
+                    <p>Mohammad is a post-doc working on... to be completed</p>
+                </div>
+            </div>
             <div class="section">
                 <div class="section-title">Mohammad Moltafet</div>
                 <div class="personal-info">
@@ -97,5 +108,10 @@
             </div>
         </div>
     </div>
+    <script>
+        function showAboutMe() {
+            document.getElementById('about-me-section').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
