@@ -25,23 +25,28 @@
         }
         .section {
             margin-bottom: 20px;
-            border-bottom: 1px solid black; /* Add border between sections */
             padding-bottom: 20px; /* Add padding at the bottom of sections */
         }
         .section-title {
             font-weight: bold;
+            border-bottom: 1px solid black; /* Add border line under section titles */
+            padding-bottom: 5px; /* Adjust space between title and border */
+            color: CornflowerBlue; /* Cornflower blue color for section titles */
         }
         ul {
-            list-style-type: none;
+            list-style-type: none; /* Remove bullet points */
             padding: 0;
         }
-        ul li::before {
-            content: "\2022"; /* Bullet character */
-            color: CornflowerBlue; /* Cornflower blue color */
-            font-size: 1.2em;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+        ul li {
+            color: CornflowerBlue; /* Cornflower blue color for list items */
+        }
+        .personal-info {
+            display: flex;
+            align-items: center;
+        }
+        .personal-info img {
+            width: 100px; /* Adjust figure size as needed */
+            margin-right: 20px; /* Add space between photo and text */
         }
     </style>
 </head>
@@ -69,8 +74,7 @@
         <div id="main-content">
             <div class="section">
                 <div class="section-title">Mohammad Moltafet</div>
-                <p>Department of Electrical and Computer Engineering - University of California Santa Cruz</p>
-                <div>
+                <div class="personal-info">
                     <img src="Mohammad_Moltafet.jpg" alt="Mohammad Moltafet">
                     <div>
                         <p>Postdoctoral Researcher</p>
