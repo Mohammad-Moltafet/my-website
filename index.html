@@ -73,6 +73,14 @@
         .bullet-square {
             list-style-type: square;
         }
+        @media screen and (max-width: 768px) {
+            #container {
+                flex-direction: column;
+            }
+            #sidebar, #main-content {
+                width: 100%; /* Make both sidebar and main content take up full width */
+            }
+        }
     </style>
 
 </head>
