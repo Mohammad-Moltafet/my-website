@@ -13,15 +13,14 @@
         }
         #container {
             display: flex;
-            width: 100%;
+            flex-wrap: wrap;
         }
         #sidebar {
-            background-color: lightgray; 
+            background-color: lightgray;
             width: 20%; /* Approximately 1/8 of the total width */
             padding: 20px;
         }
         #main-content {
-            
             width: 80%; /* Approximately 7/8 of the total width */
             padding: 20px;
         }
@@ -30,48 +29,28 @@
             padding-bottom: 20px; /* Add padding at the bottom of sections */
         }
         .section-title {
-            font-size: 20px; 
+            font-size: 20px;
             font-weight: bold;
             border-bottom: 2px solid black; /* Add border line under section titles */
             padding-bottom: 5px; /* Adjust space between title and border */
             color: LightSkyBlue; /* Black color for section titles */
             font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
         }
-        
+
         ul li {
             color: Black; /* Cornflower blue color for list items */
             cursor: pointer; /* Change cursor to pointer on hover */
             font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
             font-size: 18px; /* Smaller font size for secondary information */
         }
-        .personal-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px; /* Add space between photo and section title */
-            margin-top: 2px; /* Add space between photo and line */
-        }
-        .personal-info img {
-            width: 100px; /* Adjust figure size as needed */
-            margin-right: 20px; /* Add space between photo and text */
-        }
-        .secondary-info {
-            font-size: 18px; /* Smaller font size for secondary information */
-            color: black; /* Black color for secondary information */
-             margin-top: -1px; /* Reduce line spacing */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
-        .about-me-content {
-            margin-top: 20px; /* Add space between title and content */
-            ont-size: 16px; /* Smaller font size for secondary information */
-            color: black; /* Black color for secondary information */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
-        .bullet-circle {
-            list-style-type: circle;
-        }
 
-        .bullet-square {
-            list-style-type: square;
+        @media screen and (max-width: 768px) {
+            #container {
+                flex-direction: column;
+            }
+            #sidebar, #main-content {
+                width: 100%; /* Make both sidebar and main content take up full width */
+            }
         }
     </style>
 </head>
