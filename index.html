@@ -1,535 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Moltafet</title>
-    <style>
-     body {
-            font-family: Times New Roman, Times, serif;
-            margin: 0;
-            padding: 0;
-            font-size: 18px;
-        }
-
-.bullet-square {
-            margin-bottom: 10px; /* Adjust the value to control the space between items */
-        }
-        ol.reversed li {
-            margin-bottom: 10px; /* Adjust the value to control the space between items */
-        }
-        
-        #container {
-            display: flex;
-            width: 100%;
-        }
-        #sidebar {
-            background-color: lightgray; 
-            width: 20%; /* Approximately 1/8 of the total width */
-            padding: 20px;
-        }
-        #main-content {
-            
-            width: 60%; /* Approximately 7/8 of the total width */
-            padding: 20px;
-            margin-left: 30px; 
-/*             justify; */
-        }
-        .section {
-            margin-bottom: 20px;
-            padding-bottom: 20px; /* Add padding at the bottom of sections */
-        }
-        .section-title {
-            font-size: 20px; 
-            font-weight: bold;
-            border-bottom: 3px Solid CornflowerBlue; /* Add border line under section titles */
-            padding-bottom: 5px; /* Adjust space between title and border */
-            color: CornflowerBlue; /* Black color for section titles */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
-        
-        ul li {
-            color: Black; /* Cornflower blue color for list items */
-            cursor: pointer; /* Change cursor to pointer on hover */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-            font-size: 18px; /* Smaller font size for secondary information */
-        }
-        .personal-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px; /* Add space between photo and section title */
-            margin-top: 2px; /* Add space between photo and line */
-        }
-
-        .personal-info img {
-            width: 130px; /* Adjust figure size as needed */
-            margin-right: 20px; /* Add space between photo and text */
-        }
-        .secondary-info {
-            font-size: 18px; /* Smaller font size for secondary information */
-            color: black; /* Black color for secondary information */
-             margin-top: -1px; /* Reduce line spacing */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
-        .about-me-content {
-            margin-top: 20px; /* Add space between title and content */
-            ont-size: 16px; /* Smaller font size for secondary information */
-            color: black; /* Black color for secondary information */
-            font-family: "Times New Roman", Times, serif; /* This sets a custom font for elements with class "custom-font" */
-        }
-        .bullet-circle {
-            list-style-type: circle;
-        }
-
-        .bullet-square {
-            list-style-type: square;
-        }
-        @media screen and (max-width: 768px) {
-            #container {
-                flex-direction: column;
-            }
-            #sidebar, #main-content {
-                width: 100%; /* Make both sidebar and main content take up full width */
-            }
-        }
-
-        ol {
-        padding-left: 20px; /* Adjust the left padding of the list */
-    }
-    li {
-        margin-bottom: 12px; /* Adjust the bottom margin of each list item */
-    }
-    </style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammad Moltafet</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Times New Roman", Times, serif; font-size: 16px; line-height: 1.7; color: #222; background: #fff; }
+    a { color: #2255aa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    #layout { display: flex; max-width: 1080px; margin: 0 auto; padding: 30px 20px; gap: 0; }
+    #sidebar { width: 190px; flex-shrink: 0; background-color: #d3d3d3; padding: 18px 14px; align-self: flex-start; }
+    #sidebar .sidebar-name { font-size: 15px; font-weight: bold; color: #4169e1; border-bottom: 3px solid #4169e1; padding-bottom: 4px; margin-bottom: 8px; }
+    #sidebar nav ul { list-style: none; padding: 0; margin: 0 0 16px 0; }
+    #sidebar nav ul li { font-size: 15px; padding: 3px 0; border-bottom: 1px dotted #aaa; cursor: pointer; color: #222; }
+    #sidebar nav ul li:hover { color: #4169e1; }
+    #sidebar .sidebar-section-title { font-size: 15px; font-weight: bold; color: #4169e1; border-bottom: 3px solid #4169e1; padding-bottom: 4px; margin: 12px 0 8px; }
+    #main { flex: 1; padding: 0 0 0 28px; min-width: 0; }
+    .page { display: none; }
+    .page.active { display: block; }
+    .section-title { font-size: 18px; font-weight: bold; color: #4169e1; border-bottom: 3px solid #4169e1; padding-bottom: 4px; margin: 22px 0 8px; }
+    .section-title:first-child { margin-top: 0; }
+    hr.section-hr { border: none; border-top: 1px solid #ccc; margin: 4px 0 12px; }
+    .bio-intro { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 6px; }
+    .bio-intro img { width: 130px; flex-shrink: 0; border: 1px solid #bbb; }
+    .bio-intro p { font-size: 16px; line-height: 1.8; }
+    ul.content-list { padding-left: 22px; margin: 6px 0 0 0; }
+    ul.content-list li { margin-bottom: 8px; font-size: 16px; }
+    ol.pub-list { padding-left: 24px; margin: 6px 0 0 0; }
+    ol.pub-list li { margin-bottom: 10px; font-size: 16px; }
+    ul.student-list { padding-left: 22px; }
+    ul.student-list li { margin-bottom: 10px; font-size: 16px; }
+    h3.sub-heading { font-size: 16px; font-weight: bold; margin: 14px 0 6px; }
+    #footer { margin-top: 40px; padding-top: 8px; border-top: 1px solid #ccc; font-size: 13px; color: #888; }
+    @media (max-width: 640px) { #layout { flex-direction: column; padding: 12px; } #sidebar { width: 100%; } .bio-intro { flex-direction: column; } }
+  </style>
 </head>
-
-
-
-
-
-    
-
-    
 <body>
-    
+<div id="layout">
 
-<div id="container">
-        <div id="sidebar">
-                        <div class="section">
-                            <div class="section-title">Mohammad Moltafet</div>
-                            <ul>
-                                <li onclick="showHome()">Home</li>
-                                <li onclick="showAboutMe()">About me</li>
-                                <li onclick="window.location.href='https://scholar.google.com/citations?user=ksSr5bMAAAAJ&hl=en'">Google Scholar</li>
-                                <li onclick="window.location.href='https://www.researchgate.net/profile/Mohammad-Moltafet'">Research Gate</li>
-                            </ul>
-                        </div>
-                        <div class="section" id="publication-section">
-                            <div class="section-title">Publications</div>
-                            <ul>
-                                <li onclick="showJournals()">Journals</li>                    
-                                <li onclick="showConferences()">Conferences</li>
-                                <li onclick="showBookChapter()">Book Chapters and Academic Theses</li>
-                            </ul>
-                        </div>
-        </div>
+  <div id="sidebar">
+    <div class="sidebar-name">Mohammad Moltafet</div>
+    <nav>
+      <ul>
+        <li onclick="showPage('home')">Home</li>
+        <li onclick="showPage('about')">About me</li>
+        <li onclick="window.open('https://scholar.google.com/citations?user=ksSr5bMAAAAJ&hl=en','_blank')">Google Scholar</li>
+        <li onclick="window.open('https://www.researchgate.net/profile/Mohammad-Moltafet','_blank')">Research Gate</li>
+      </ul>
+    </nav>
+    <div class="sidebar-section-title">Publications</div>
+    <nav>
+      <ul>
+        <li onclick="showPage('journals')">Journals</li>
+        <li onclick="showPage('conferences')">Conferences</li>
+        <li onclick="showPage('bookchapters')">Book Chapters and Academic Theses</li>
+      </ul>
+    </nav>
+  </div>
 
+  <div id="main">
 
-        
-        <div id="main-content">
-            <div id="home-section" class="section">
-                                <div class="section-title">Mohammad Moltafet</div>
-                                <hr> <!-- Horizontal line -->
-                                    <div class="personal-info">
-                                    <img src="My_Photo.jpg" alt="Mohammad Moltafet">
-                                <div>
-                                       <p style="Times New Roman, Times, serif;">
-                                        Assistant Adjunct Professor<br>
-                                        Department of Electrical and Computer Engineering<br>
-                                        University of California, Santa Cruz<br>
-                                       <!-- Phone: +18315295887<br>-->
-                                        E-mail: mmoltafe@ucsc.edu; mhmd.moltafet@gmail.com
-                                      </p>
-                                      </div>
-                                </div>
-                
-                
-                                        
-                                <div class="section" id="research-section">
-                                            <div class="section-title">Research Interests</div>
-                                             <hr> <!-- Horizontal line -->
-                                            <!--<p>My research interests include</p>-->
-                                            <ul>
-                                                <li><strong>Semantic communications</strong> with special emphasis on information freshness, goal-oriented communications,
-                                                     and real-time remote tracking</li>
-                                                
-                                                <li><strong>Cybersecurity</strong> with special emphasis on information-theoretic security, 
-                                                    multi-party communications in IoT systems, data storage, and federated learning</li>
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <div class="section-title">Mohammad Moltafet</div>
+      <hr class="section-hr">
+      <div class="bio-intro">
+        <img src="My_Photo.jpg" alt="Mohammad Moltafet">
+        <p>
+          Assistant Adjunct Professor<br>
+          Department of Electrical and Computer Engineering<br>
+          University of California, Santa Cruz<br>
+          E-mail: <a href="mailto:mmoltafe@ucsc.edu">mmoltafe@ucsc.edu</a>;
+                  <a href="mailto:mhmd.moltafet@gmail.com">mhmd.moltafet@gmail.com</a>
+        </p>
+      </div>
 
-                                                
-                                                <li> <strong>Reinforcement learning and decision-making under uncertainty</strong>, including Markov Decision 
-                                                    Processes (MDPs), Constrained MDPs (CMDPs), and Partially Observable MDPs (POMDPs) </li>
-                                                
-                                                <li><strong>Next-generation wireless systems and networking</strong>, including radio access networks, multiple access techniques, 
-                                                    optimization, and stochastic control for both 
-                                                    broadband data networks, i.e., 5/6G, and wireless sensor networks</li>
+      <div class="section-title">Research Interests</div>
+      <hr class="section-hr">
+      <ul class="content-list">
+        <li><strong>Semantic communications</strong> with special emphasis on information freshness, goal-oriented communications, and real-time remote tracking</li>
+        <li><strong>Cybersecurity</strong> with special emphasis on information-theoretic security, multi-party communications in IoT systems, data storage, and federated learning</li>
+        <li><strong>Reinforcement learning and decision-making under uncertainty</strong>, including Markov Decision Processes (MDPs), Constrained MDPs (CMDPs), and Partially Observable MDPs (POMDPs)</li>
+        <li><strong>Next-generation wireless systems and networking</strong>, including radio access networks, multiple access techniques, optimization, and stochastic control for both broadband data networks, i.e., 5/6G, and wireless sensor networks</li>
+        <li><strong>Optimization techniques for wireless communications and signal processing</strong>, including convex optimization, Lyapunov optimization, machine learning, distributed optimization, large-scale optimization, and dynamic programming</li>
+      </ul>
 
-                                                <li><strong>Optimization techniques for wireless communications and signal processing</strong>, including 
-                                                 convex optimization, Lyapunov optimization,  machine learning, distributed optimization, large-scale optimization, and dynamic programming</li>
+      <div class="section-title">Selected Publications</div>
+      <hr class="section-hr">
+      <ul class="content-list" style="list-style-type: square;">
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, Z. Rezki, M. Codreanu, and R. D. Yates, "AoI in M/G/1/1 Queues with Probabilistic Preemption," <i>Proc. IEEE ISIT, Michigan, USA, Jun. 2025.</i> [<a href="https://arxiv.org/pdf/2502.00274" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An unconditionally secure encryption scheme for IoBT networks," <i>IEEE Internet of Things Journal, Early access, 2025.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Semantic-aware sampling and transmission in energy harvesting systems: A POMDP approach," <i>IEEE Trans. Commun., vol. 73, no. 7, pp. 4898–4913, Jul. 2025.</i> [<a href="https://d197for5662m48.cloudfront.net/documents/publicationstatus/198029/preprint_pdf/96560ef365f52e549305c9d8a07e332f.pdf" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An Unconditionally Secure Encryption Protocol for Cloud Storage," <i>Proc. IEEE ISIT, Athens, Greece, Jul. 2024.</i></li>
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "On the semantic security in the general bounded storage model: A new proof," <i>IEEE Trans. Inf. Forensics Security, vol. 19, pp. 4263–4271, Mar. 2024.</i> [<a href="https://arxiv.org/pdf/2403.18935" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and R. D. Yates, "Status update control and analysis under two-way delay," <i>IEEE/ACM Trans. Netw., vol. 31, no. 6, pp. 2918–2933, Jan. 2024.</i> [<a href="https://arxiv.org/pdf/2208.06177.pdf" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in multi-source M/G/1/1 queueing systems," <i>IEEE Trans. Commun., vol. 70, no. 10, pp. 6503–6516, Oct. 2022.</i> [<a href="https://arxiv.org/pdf/2201.10991" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and N. Pappas, "Power minimization for AoI of information constrained dynamic control in wireless sensor networks," <i>IEEE Trans. Commun., vol. 70, no. 1, pp. 419–432, Jan. 2022.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average AoI in multi-source systems with source-aware packet management," <i>IEEE Trans. Commun., vol. 69, no. 2, pp. 1121–1133, Feb. 2021.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "On the age of information in multi-source queueing models," <i>IEEE Trans. Commun., vol. 68, no. 8, pp. 5003–5017, May 2020.</i></li>
+        <li><strong>M. Moltafet</strong>, R. Joda, N. Mokari, M. R. Sabagh, and M. Zorzi, "Joint access and fronthaul radio resource allocation in PD-NOMA-based 5G networks enabling dual connectivity and CoMP," <i>IEEE Trans. Commun., vol. 66, no. 12, pp. 6463–6477, Dec. 2018.</i></li>
+        <li><strong>M. Moltafet</strong>, P. Azmi, N. Mokari, M. R. Javan, and A. Mokdad, "Optimal and fair energy-efficient resource allocation for energy harvesting-enabled-PD-NOMA-based HetNets," <i>IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2054–2067, Mar. 2018.</i></li>
+        <li><strong>M. Moltafet</strong>, N. M. Yamchi, M. R. Javan, and P. Azmi, "Comparison study between PD-NOMA and SCMA," <i>IEEE Trans. Veh. Technol., vol. 67, no. 2, pp. 1830–1834, Feb. 2018.</i></li>
+      </ul>
+      <div id="footer">Page last updated June 2026.</div>
+    </div>
 
+    <!-- ABOUT ME -->
+    <div id="page-about" class="page">
+      <div class="section-title">Mohammad Moltafet – About me</div>
+      <hr class="section-hr">
+      <p style="font-size:16px; margin-bottom:14px;">I received my Ph.D. in communications engineering from the University of Oulu, Finland, in 2021. I was a Visiting Ph.D. Researcher at Linköping University, Sweden, in 2019, and a Postdoctoral Researcher at the University of Oulu and the Technical University of Munich (TUM), Germany, in 2021 and 2022, respectively. Currently, I am an Assistant Adjunct Professor at the University of California at Santa Cruz, USA.</p>
 
+      <div class="section-title">Research Interests and Background</div>
+      <hr class="section-hr">
+      <p style="font-size:16px; margin-bottom:8px;">My current research interests include:</p>
+      <ul class="content-list">
+        <li><strong>Semantic communications</strong> with special emphasis on information freshness, goal-oriented communications, and real-time remote tracking</li>
+        <li><strong>Cybersecurity</strong> with special emphasis on information-theoretic security, multi-party communications in IoT systems, data storage, and federated learning</li>
+        <li><strong>Reinforcement learning and decision-making under uncertainty</strong>, including Markov Decision Processes (MDPs), Constrained MDPs (CMDPs), and Partially Observable MDPs (POMDPs)</li>
+        <li><strong>Next-generation wireless systems and networking</strong>, including radio access networks, multiple access techniques, optimization, and stochastic control for both broadband data networks, i.e., 5/6G, and wireless sensor networks</li>
+        <li><strong>Optimization techniques for wireless communications and signal processing</strong>, including convex optimization, Lyapunov optimization, machine learning, distributed optimization, large-scale optimization, and dynamic programming</li>
+      </ul>
+      <p style="font-size:16px; margin-top:10px;">The core theoretical background required for carrying out successful research in these fast-developing fields is formed by: <strong>Communication Theory and Networking</strong>, <strong>Mathematical Optimization</strong>, <strong>Information Theory</strong>, <strong>Machine Learning</strong>, <strong>Probability Theory</strong>, <strong>Queuing Theory</strong>, <strong>Signal Processing</strong>, and <strong>Number Theory</strong>.</p>
 
+      <div class="section-title">Student Advising</div>
+      <hr class="section-hr">
+      <ul class="student-list">
+        <li><strong>May 2025 – Present:</strong> Jinxin Yang, University of California Santa Cruz; research area: <i>Semantic communications for cyber-physical systems;</i> jointly with Prof. Hamid R. Sadjadpour.</li>
+        <li><strong>December 2021 – April 2025:</strong> Dr. <a href="https://scholar.google.com/citations?user=4scVZPgAAAAJ&hl=en" target="_blank">Saeid Sadeghi-Vilni</a>, University of Oulu, Finland; research area: <i>Information freshness for Ultra-reliable low-latency applications;</i> jointly with <a href="https://scholar.google.com/citations?hl=en&user=fqsZP0YAAAAJ" target="_blank">Prof. Marian Codreanu</a>.</li>
+        <li><strong>October 2021 – November 2024:</strong> Dr. <a href="https://scholar.google.com/citations?hl=en&user=h22LonMAAAAJ" target="_blank">Abolfazl Zakeri</a>, University of Oulu, Finland; research area: <i>Reinforcement learning for semantic-aware wireless communications;</i> jointly with Prof. Marian Codreanu.</li>
+      </ul>
 
-                                                
-                                            </ul>
-                                </div>
-                
-                
-                
-                
-                                  <div class="section">
-                                                <div class="section-title">Selected Publications</div>
-                                                <hr> <!-- Horizontal line -->
-                                               <ul>
+      <div class="section-title">Teaching</div>
+      <hr class="section-hr">
+      <h3 class="sub-heading">Courses Taught</h3>
+      <ul class="content-list">
+        <li><strong>ECE 251 – Principles of Digital Communications</strong><br>University of California, Santa Cruz, Spring 2026</li>
+      </ul>
+      <h3 class="sub-heading">Teaching Assistant Experience</h3>
+      <ul class="content-list">
+        <li><strong>Communication Systems</strong></li>
+        <li><strong>Signals and Systems</strong></li>
+        <li><strong>Engineering Mathematics</strong></li>
+        <li><strong>Differential Equations</strong></li>
+        <li><strong>General Mathematics for Engineers I</strong></li>
+        <li><strong>General Mathematics for Engineers II</strong></li>
+      </ul>
 
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, M. Codreanu, and Roy D. Yates, ''AoI in M/G/1/1 Gueues with Probabilistic Preemption," <i> in Proceedings of the IEEE International Symposium on Information Theory (ISIT), Michigan, USA, Jun. 22 -- 27, 2025, pp. 1-5.[<a href="https://arxiv.org/pdf/2502.00274">pdf</a>]</i></li>
+      <div class="section-title">Awards &amp; Grants</div>
+      <hr class="section-hr">
+      <ul class="content-list">
+        <li><strong>Tauno Tönning Foundation</strong> personal grant for doctoral studies, 2021 (a competitive award for researchers in Finland)</li>
+        <li><strong>Nokia Foundation</strong> personal grant for doctoral studies, 2020 (a competitive award for researchers in Finland)</li>
+        <li><strong>HPY Research Foundation</strong> personal grant for doctoral studies, 2020 (a competitive award for researchers in Finland)</li>
+        <li><strong>Riitta ja Jorma J. Takanen Foundation</strong> personal grant for doctoral studies, 2020 (a competitive award for researchers in Finland)</li>
+        <li><strong>Finnish Foundation for Technology Promotion</strong> personal grant for doctoral studies, 2019 (a competitive award for researchers in Finland)</li>
+        <li>Recognition to the <strong>Ph.D. student with the highest accumulated JUFO</strong> in the University of Oulu, Finland, during 2019 and 2020</li>
+        <li>The <strong>best M.Sc. thesis</strong> at Tarbiat Modares University, 2016 (Selected Thesis – 2016)</li>
+        <li><strong>M.Sc. Ranked 1st</strong> among all Communications Engineering M.Sc. students of Tarbiat Modares University, Tehran, Iran</li>
+      </ul>
+      <div id="footer">Page last updated June 2026.</div>
+    </div>
 
-                                    
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, H. R. Sadjadpour,  and Z. Rezki, ''An unconditionally secure encryption scheme for IoBT networks," <i> IEEE Internet of Things Journal, Early access, 2025.</i></li>
-                                           
-                                                 <li class="bullet-square">A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Semantic-aware sampling and transmission in energy harvesting systems: A POMDP approach," <i> IEEE Transactions on Communications, vol. 73, no. 7, pp. 4898-4913, July 2025.[<a href="https://d197for5662m48.cloudfront.net/documents/publicationstatus/198029/preprint_pdf/96560ef365f52e549305c9d8a07e332f.pdf">pdf</a>]</i></li>           
-                                                 <li class="bullet-square"><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An Unconditionally Secure Encryption Protocol for Cloud Storage," <i> in Proceedings of IEEE International Symposium on Information Theory (ISIT), Athens, Greece, Jul. 7 -- 12, 2024.</i></li>
-                                                 <li class="bullet-square"><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "On the semantic security in the general bounded storage model: A new proof," <i>IEEE Transactions on Information Forensics and Security, vol. 19, pp. 4263-4271, Mar. 2024. [<a href="https://arxiv.org/pdf/2403.18935">pdf</a>]</i></li>
-                                                 <!--<li class="bullet-square"><strong>M. Moltafet</strong>, H. Sadjadpour, and Z. Rezki, "A Practical Perfect Secrecy Approach for IoBT Systems," <i>in Proceedings of IEEE Military Communications Conference (MILCOM), Boston, MA, USA, Oct. 30–Nov. 03, 2023.</i></li>-->
-                                            
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and R. D. Yates, "Status update control and analysis under two-way delay," <i> IEEE/ACM Transactions on Networking, vol. 31, no. 6, pp. 2918-2933, Jan. 2024.[<a href="https://arxiv.org/pdf/2208.06177.pdf">pdf</a>]</i></li>
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in multi-source M/G/1/1 queueing systems," <i>IEEE Transactions on Communications, vol. 70, no. 10, pp. 6503-6516, Oct. 2022. [<a href="https://arxiv.org/pdf/2201.10991">pdf</a>]</i></li> 
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "AoI in Source-Aware Preemptive M/G/1/1 Queueing Systems: Moment Generating Function," <i> in Proceedings of the IEEE International Symposium on Information Theory (ISIT), Helsinki, Finland, Jun. 26–Jul. 01, 2022, pp. 139-143.[<a href="https://arxiv.org/pdf/2201.10991.pdf">pdf</a>]</i></li>
-                                            
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and N. Pappas, "Power minimization for AoI of information constrained dynamic control in wireless sensor networks," <i>IEEE Transactions on Communications, vol. 70, no. 1, pp. 419-432, Jan. 2022.</i></li>
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average AoI in multi-source systems with source-aware packet management," <i>IEEE Transactions on Communications, vol. 69, no. 2, pp. 1121–1133, Feb. 2021.</i></li>
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average age of information for a multi-source M/M/1 queueing model with packet management," <i>in Proceedings of the IEEE International Symposium on Information Theory (ISIT), Los Angeles, CA, USA, Jun. 21 -- 26, 2020, pp. 1765–1769.</i></li>
-                                            
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "On the age of information in multi-source queueing models," <i>IEEE Transactions on Communications, vol. 68, no. 8, pp. 5003–5017, May 2020.</i></li>
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, R. Joda, N. Mokari, M. R. Sabagh, and M. Zorzi, "Joint access and fronthaul radio resource allocation in PD-NOMA-based 5G networks enabling dual connectivity and CoMP," <i>IEEE Transactions on Communications, vol. 66, no. 12, pp. 6463-6477, Dec. 2018.</i></li>
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, P. Azmi, N. Mokari, M. R. Javan, and A. Mokdad, "Optimal and fair energy-efficient resource allocation for energy harvesting-enabled-PD-NOMA-based HetNets," <i>IEEE Transactions on Wireless Communications, vol. 17, no. 3, pp. 2054-2067, Mar. 2018.</i></li>
-                                                <li class="bullet-square"><strong>M. Moltafet</strong>, N. M. Yamchi, M. R. Javan, and P. Azmi, "Comparison study between PD-NOMA and SCMA," <i>IEEE Transactions on Vehicular Technology, vol. 67, no. 2, pp. 1830-1834, Feb. 2018.</i></li>
-                            
-                                                </ul>
-                                     </div>
+    <!-- JOURNALS -->
+    <div id="page-journals" class="page">
+      <div class="section-title">Mohammad Moltafet – Journals</div>
+      <hr class="section-hr">
+      <ol reversed class="pub-list">
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An unconditionally secure encryption scheme for IoBT networks," <i>IEEE Internet of Things Journal, Early access, 2025.</i></li>
+        <li>S. Sadeghi, A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Real-time tracking in a status update system with an imperfect feedback channel," <i>IEEE Transactions on Vehicular Technology, Early access, 2025.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Goal-oriented remote tracking through correlated observations in pull-based communications," <i>IEEE Communications Letters, Early access, 2025.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Semantic-aware sampling and transmission in energy harvesting systems: A POMDP approach," <i>IEEE Transactions on Communications, vol. 73, no. 7, pp. 4898–4913, July 2025.</i> [<a href="https://d197for5662m48.cloudfront.net/documents/publicationstatus/198029/preprint_pdf/96560ef365f52e549305c9d8a07e332f.pdf" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "On the semantic security in the general bounded storage model: A new proof," <i>IEEE Transactions on Information Forensics and Security, vol. 19, pp. 4263–4271, Mar. 2024.</i> [<a href="https://arxiv.org/pdf/2403.18935" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and R. D. Yates, "Status update control and analysis under two-way delay," <i>IEEE/ACM Transactions on Networking, vol. 31, no. 6, pp. 2918–2933, Jan. 2024.</i> [<a href="https://arxiv.org/pdf/2208.06177.pdf" target="_blank">pdf</a>]</li>
+        <li>S. Sadeghi, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Multi-source AoI-constrained resource minimization under HARQ: Heterogeneous sampling processes," <i>IEEE Transactions on Vehicular Technology, vol. 73, no. 1, pp. 1084–1099, Jan. 2024.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Dynamic scheduling for minimizing AoI in resource-constrained multi-source relaying systems with stochastic arrivals," <i>IEEE Transactions on Wireless Communications, vol. 23, no. 1, pp. 450–466, Dec. 2023.</i> [<a href="https://arxiv.org/pdf/2203.05656.pdf" target="_blank">pdf</a>]</li>
+        <li>S. Sadeghi, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "AoI analysis and optimization in systems with computations-intensive updates," <i>Journal of Communications and Networks, vol. 25, no. 5, pp. 585–597, Oct. 2023.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Query-age-optimal scheduling under sampling and transmission constraints," <i>IEEE Communications Letters, vol. 27, no. 4, pp. 1205–1209, Apr. 2023.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in multi-source M/G/1/1 queueing systems," <i>IEEE Transactions on Communications, vol. 70, no. 10, pp. 6503–6516, Oct. 2022.</i> [<a href="https://arxiv.org/pdf/2201.10991" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and N. Pappas, "Power minimization for AoI of information constrained dynamic control in wireless sensor networks," <i>IEEE Transactions on Communications, vol. 70, no. 1, pp. 419–432, Jan. 2022.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in a two-source system with packet management," <i>IEEE Wireless Communications Letters, vol. 10, no. 4, pp. 882–886, Apr. 2021.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average AoI in multi-source systems with source-aware packet management," <i>IEEE Transactions on Communications, vol. 69, no. 2, pp. 1121–1133, Feb. 2021.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "On the age of information in multi-source queueing models," <i>IEEE Transactions on Communications, vol. 68, no. 8, pp. 5003–5017, May 2020.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Worst case age of information in wireless sensor networks: A multi-access channel," <i>IEEE Wireless Communications Letters, vol. 9, no. 3, pp. 321–325, Mar. 2020.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, and N. Mokari, "Joint radio resource allocation and SIC ordering in NOMA-based networks using submodularity and matching theory," <i>IEEE Transactions on Vehicular Technology, vol. 68, no. 10, pp. 9761–9773, Oct. 2019.</i></li>
+        <li><strong>M. Moltafet</strong>, S. Parsaeefard, M. R. Javan, and N. Mokari, "Robust radio resource allocation in MISO-SCMA assisted C-RAN in 5G networks," <i>IEEE Transactions on Vehicular Technology, vol. 68, no. 6, pp. 5758–5768, Jun. 2019.</i></li>
+        <li>A. Mokdad, P. Azmi, N. Mokari, <strong>M. Moltafet</strong>, and M. Ghaffari-Miab, "Cross-layer energy-efficient resource allocation in PD-NOMA based H-CRANs: Implementation via GPU," <i>IEEE Transactions on Mobile Computing, vol. 18, no. 6, pp. 1246–1259, Jun. 2019.</i></li>
+        <li><strong>M. Moltafet</strong>, P. Azmi, M. R. Javan, N. Mokari, and A. Mokdad, "Optimal radio resource allocation to achieve a low BER in PD-NOMA-based heterogeneous cellular networks," <i>Transactions on Emerging Telecommunications Technologies, vol. 30, no. 5, pp. 1–23, May 2019.</i></li>
+        <li><strong>M. Moltafet</strong>, R. Joda, N. Mokari, M. R. Sabagh, and M. Zorzi, "Joint access and fronthaul radio resource allocation in PD-NOMA-based 5G networks enabling dual connectivity and CoMP," <i>IEEE Transactions on Communications, vol. 66, no. 12, pp. 6463–6477, Dec. 2018.</i></li>
+        <li><strong>M. Moltafet</strong>, P. Azmi, N. Mokari, M. R. Javan, and A. Mokdad, "Optimal and fair energy-efficient resource allocation for energy harvesting-enabled-PD-NOMA-based HetNets," <i>IEEE Transactions on Wireless Communications, vol. 17, no. 3, pp. 2054–2067, Mar. 2018.</i></li>
+        <li><strong>M. Moltafet</strong>, N. M. Yamchi, M. R. Javan, and P. Azmi, "Comparison study between PD-NOMA and SCMA," <i>IEEE Transactions on Vehicular Technology, vol. 67, no. 2, pp. 1830–1834, Feb. 2018.</i></li>
+        <li><strong>M. Moltafet</strong>, N. Mokari, M. R. Javan, H. Saeedi, and H. Pishro-Nik, "A new multiple access technique for 5G: Power domain sparse code multiple access (PSMA)," <i>IEEE Access, vol. 6, pp. 747–759, Nov. 2017.</i></li>
+        <li><strong>M. Moltafet</strong>, A. Mokdad, P. Azmi, and N. Mokari, "Radio resource allocation in PD-NOMA based HCN system considering CoMP technology," <i>International Journal of Digital Information and Wireless Communications, vol. 8, pp. 260–264, 2017.</i></li>
+        <li><strong>M. Moltafet</strong>, and P. Azmi, "Efficient resource allocation in NOMA-based HCN systems," <i>The Modares Journal of Electrical Engineering, vol. 15, no. 3, pp. 36–41, 2016.</i></li>
+        <li><strong>M. Moltafet</strong>, and P. Azmi, "Resource allocation in SCMA-based system," <i>The Modares Journal of Electrical Engineering, vol. 15, no. 1, pp. 9–14, 2016.</i></li>
+      </ol>
+      <div id="footer">Page last updated June 2026.</div>
+    </div>
 
+    <!-- CONFERENCES -->
+    <div id="page-conferences" class="page">
+      <div class="section-title">Mohammad Moltafet – Conferences</div>
+      <hr class="section-hr">
+      <ol reversed class="pub-list">
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, Z. Rezki, M. Codreanu, and R. D. Yates, "AoI in M/G/1/1 Queues with Probabilistic Preemption," <i>Proc. IEEE ISIT, Michigan, USA, Jun. 22–27, 2025.</i> [<a href="https://arxiv.org/pdf/2502.00274" target="_blank">pdf</a>]</li>
+        <li>S. S. Vilni, A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Real-time Tracking in Status Update Systems Under Imperfect Feedback: A Deep R-Learning Approach," <i>Proc. IEEE INFOCOM Workshop, London, UK, May 2025.</i></li>
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An unconditionally secure and non-malleable encryption scheme for cloud storage," <i>Proc. Annual Asilomar Conference, Pacific Grove, USA, Oct. 2024.</i></li>
+        <li>S. S. Vilni, A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Goal-oriented real-time tracking in a status update system under imperfect feedback," <i>Proc. Annual Asilomar Conference, Pacific Grove, USA, Oct. 2024.</i></li>
+        <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An unconditionally secure encryption protocol for cloud storage," <i>Proc. IEEE ISIT, Athens, Greece, Jul. 2024.</i></li>
+        <li>A. Alatawi, H. R. Sadjadpour, Z. Rezki, <strong>M. Moltafet</strong>, and A. Elfikky, "Adaptive deep neural network for non-stationary wireless channels," <i>Proc. IEEE WINCOM, Leeds, England, Jul. 2024.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Goal-oriented remote tracking of an unobservable multi-state Markov source," <i>Proc. IEEE WCNC, Dubai, UAE, Apr. 2024.</i></li>
+        <li><strong>M. Moltafet</strong>, H. Sadjadpour, and Z. Rezki, "A Practical Perfect Secrecy Approach for IoBT Systems," <i>Proc. IEEE MILCOM, Boston, MA, USA, Oct.–Nov. 2023.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Semantic-aware real-time tracking of a Markov source under sampling and transmission costs," <i>Proc. Annual Asilomar Conference, Pacific Grove, USA, Oct.–Nov. 2023.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Optimal semantic-aware sampling and transmission in energy harvesting systems through the AoII," <i>Proc. IEEE GLOBECOM, Kuala Lumpur, Malaysia, 2023.</i></li>
+        <li>S. S. Vilni, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "AoI-Constrained Transmission Scheduling with HARQ and Heterogeneous Sampling Processes," <i>Proc. IEEE INFOCOM Workshop, New York, USA, 2023.</i></li>
+        <li>S. S. Vilni, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average AoI Minimization in an HARQ-based Status Update System under Random Arrivals," <i>Proc. IEEE IoTaIS, Bali, Indonesia, 2022, pp. 160–165.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "AoI in Source-Aware Preemptive M/G/1/1 Queueing Systems: Moment Generating Function," <i>Proc. IEEE ISIT, Helsinki, Finland, Jun.–Jul. 2022, pp. 139–143.</i> [<a href="https://arxiv.org/pdf/2201.10991.pdf" target="_blank">pdf</a>]</li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Minimizing the AoI in multi-source two-hop systems under an average resource constraint," <i>Proc. IEEE SPAWC, Helsinki, Finland, Jun. 2022.</i> [<a href="https://arxiv.org/pdf/2203.05656.pdf" target="_blank">pdf</a>]</li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in multi-source systems with computation-intensive status updates," <i>Proc. IEEE ITW, 2021, pp. 1–5.</i></li>
+        <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Minimizing AoI in resource-constrained multi-source relaying systems with stochastic arrivals," <i>Proc. IEEE GLOBECOM, 2021, pp. 1–5.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Source-aware packet management for computation-intensive status updating: MGF of the AoI," <i>Proc. IEEE ISWCS, Berlin, Germany, Sept. 2021, pp. 1–6.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "An exact expression for the average AoI in a multi-source M/M/1 queueing model," <i>Proc. IEEE PIMRC, London, UK, Sep. 2020, pp. 1–6.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average age of information in a multi-source M/M/1 queueing model with LCFS prioritized packet management," <i>Proc. IEEE INFOCOM Workshop, Toronto, Canada, Jul. 2020, pp. 303–308.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average age of information for a multi-source M/M/1 queueing model with packet management," <i>Proc. IEEE ISIT, Los Angeles, CA, USA, Jun. 2020, pp. 1765–1769.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average age of information for a multi-source M/M/1 queueing model with packet management and self-preemption in service," <i>Proc. IEEE WiOpt, Volos, Greece, Jun. 2020, pp. 1–5.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "An approximate expression for the average AoI in a multi-source M/G/1 queueing model," <i>Proc. IEEE 6G Summit, Levi, Finland, Mar. 2020, pp. 1–5.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and N. Pappas, "Power minimization in wireless sensor networks with constrained AoI using stochastic optimization," <i>Proc. Annual Asilomar Conference, Pacific Grove, USA, Nov. 2019, pp. 406–410.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Closed-form expression for the average age of information in a multi-source M/G/1 queueing model," <i>Proc. IEEE ITW, Visby, Sweden, Aug. 2019, pp. 1–5.</i></li>
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Worst-case analysis of age of information in a shared-access channel," <i>Proc. IEEE ISWCS, Oulu, Finland, Aug. 2019, pp. 613–617.</i></li>
+        <li>M. Jahandideh, <strong>M. Moltafet</strong>, M. Codreanu, and M. Latva-Aho, "Low complexity sparse channel estimation for wideband mmWave systems: Multi-stage approach," <i>Proc. IEEE WCNC, Marrakesh, Morocco, Apr. 2019, pp. 1–6.</i></li>
+        <li><strong>M. Moltafet</strong>, N. Mokari, R. Joda, M. R. Sabagh, and M. Zorzi, "Joint access and fronthaul resource allocation in dual connectivity and CoMP based networks," <i>Proc. IEEE ICC, Kansas City, MO, USA, May 2018, pp. 1–6.</i></li>
+        <li>A. Mokdad, <strong>M. Moltafet</strong>, P. Azmi, and N. Mokari, "Robust radio resource allocation for heterogeneous traffic in PD-NOMA-based HCNs," <i>Proc. IEEE MENACOMM, Jounieh, Lebanon, Apr. 2018, pp. 1–6.</i></li>
+        <li><strong>M. Moltafet</strong>, N. Mokari, M. R. Javan, H. Saeedi, and H. Pishro-Nik, "PSMA for 5G: Network throughput analysis," <i>Proc. IEEE PIMRC, Montreal, QC, Canada, Oct. 2017, pp. 1–6.</i></li>
+        <li>A. Mokdad, <strong>M. Moltafet</strong>, P. Azmi, and N. Mokari, "Robust radio resource allocation for heterogeneous traffic in PD-NOMA-based cellular systems," <i>Proc. IEEE ICEE, Tehran, Iran, May 2017, pp. 1796–1801.</i></li>
+        <li><strong>M. Moltafet</strong>, P. Azmi, and N. Mokari, "Power minimization in 5G heterogeneous cellular networks," <i>Proc. IEEE ICEE, Shiraz, Iran, May 2016, pp. 234–238.</i></li>
+      </ol>
+      <div id="footer">Page last updated June 2026.</div>
+    </div>
 
-                                     <!--
-                                            <div class="section">
-                                                <div class="section-title">News!</div>
-                                                <hr> 
-                                                <ul>
-                                                    <li>04/30/2025: hg</li>
-                                                </ul>
-                                            </div>
-                                            -->
+    <!-- BOOK CHAPTERS & THESES -->
+    <div id="page-bookchapters" class="page">
+      <div class="section-title">Mohammad Moltafet – Book Chapters and Academic Theses</div>
+      <hr class="section-hr">
+      <ol reversed class="pub-list">
+        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Timely status updating via packet management in multi-source systems," <i>Age of Information: Foundations and Applications, Cambridge University Press, Jan. 2023.</i></li>
+        <li><strong>M. Moltafet</strong>, <i>Information Freshness in Wireless Networks</i>, Ph.D. thesis, Centre for Wireless Communications, University of Oulu. Acta Universitatis Ouluensis, Oulu, Finland, Jun. 2021.</li>
+        <li><strong>M. Moltafet</strong>, <i>Radio Resource Allocation in NOMA-based HCN systems</i>, Master's thesis, Tarbiat Modares University, Tehran, Iran, Sept. 2016.</li>
+      </ol>
+      <div id="footer">Page last updated June 2026.</div>
+    </div>
 
-
-                
-
-         </div>
-
-
-
-
-            
-            
-            <div id="about-me-section" class="section" style="display: none;">
-                <div class="section-title">Mohammad Moltafet - About me</div>
-                <hr> <!-- Horizontal line -->
-                                <div class="about-me-content">
-                                    
-                                    <p>I received my 
-                                        <!--M.Sc. degree (Ranked 1st) in communications engineering from Tarbiat Modares University, 
-                                        Tehran, Iran, in 2016, and my--> 
-                                         Ph.D. in communications engineering from the University of Oulu, Finland, in 2021. I was a 
-                                        Visiting Ph.D. Researcher at Linköping University, Sweden, in 2019, and a Postdoctoral Researcher at the University of Oulu, 
-                                        and the Technical University of Munich (TUM), Germany, in 2021 and 2022, respectively. Currently, I am an Assistant Adjunct Professor at 
-                                        the University of California at Santa Cruz, USA.</p>
-
-                                    
-                                </div>
-
-
-
-                        <div class="section" id="research-interests">
-                                                  <div class="section-title">Research Interests and Background</div>
-                                                     <hr> <!-- Horizontal line -->
-
-
-                            
-                             <p>My current research interests include:</p>
-                            
-                                <ul>
-                                <li><strong>Semantic communications</strong> with special emphasis on information freshness, goal-oriented communications,
-                                     and real-time remote tracking</li>
-                                
-                                <li><strong>Cybersecurity</strong> with special emphasis on information-theoretic security, 
-                                    multi-party communications in IoT systems, data storage, and federated learning</li>
-
-                                
-                                <li> <strong>Reinforcement learning and decision-making under uncertainty</strong>, including Markov Decision 
-                                    Processes (MDPs), Constrained MDPs (CMDPs), and Partially Observable MDPs (POMDPs) </li>
-                                
-                                <li><strong>Next-generation wireless systems and networking</strong>, including radio access networks, multiple access techniques, 
-                                    optimization, and stochastic control for both 
-                                    broadband data networks, i.e., 5/6G, and wireless sensor networks</li>
-
-                                <li><strong>Optimization techniques for wireless communications and signal processing</strong>, including 
-                                 convex optimization, Lyapunov optimization,  machine learning, distributed optimization, large-scale optimization, and dynamic programming</li>
-
-
-                                       </ul>
-                                                                
-                                         <p>
-                                              The core theoretical background required for carrying out successful research in these fast-developing fields
-                                              is formed by: <strong>Communication Theory and Networking</strong>, <strong>Mathematical Optimization</strong>,
-                                              <strong>Information Theory</strong>, <strong>Machine Learning</strong>, <strong>Probability Theory</strong>, <strong>Queuing Theory</strong>,
-                                              <strong>Signal Processing</strong>, and <strong>Number Theory</strong>.
-                                    </p>
-                               </div>
-
-
-                
-
-                                <div class="section" id="student-advising-section">
-                                                  <div class="section-title">Student Advising</div>
-                                                     <hr> <!-- Horizontal line -->
-                                                        <ul>
-
-                                                            <li>
-                                                            <strong>May 2025 – Present:</strong> Jinxin Yang, University of California Santa Cruz;
-                                                            research area: <i>Semantic communications for cyber-physical systems;</i> 
-                                                            jointly with Prof. Hamid R. Sadjadpour.
-
-                                                             </li>
-                                                          <li>
-                                                   <strong>December 2021 – April 2025:  </strong> Dr. <a href="https://scholar.google.com/citations?user=4scVZPgAAAAJ&hl=en">Saeid Sadeghi-Vilni</a>, 
-                                                               University of Oulu, Finland; research area: <i>Information freshness for Ultra-reliable low-latency applications;</i> 
-                                                              jointly with <a href="https://scholar.google.com/citations?hl=en&user=fqsZP0YAAAAJ">Prof. Marian Codreanu</a>.
-                                                      </li>
-                                                      <li>
-                                                  <strong>October 2021–November 2024: </strong> Dr. <a href="https://scholar.google.com/citations?hl=en&user=h22LonMAAAAJ">Abolfazl Zakeri</a>,
-                                                          University of Oulu, Finland; research area: <i>Reinforcement learning for semantic-aware wireless communications;</i> 
-                                                          jointly with Prof. Marian Codreanu.
-                                                       </li>
-                                                     </ul>
-                               </div>
-
-
-   <div class="section" id="Teaching-Experience">
-  <div class="section-title">Teaching</div>
-<hr>
-
-<h3>Courses Taught</h3>
-<ul>
-  <li>
-    <strong>ECE 251 – Principles of Digital Communications</strong><br>
-    University of California, Santa Cruz, Spring 2026
-  </li>
-</ul>
-
-<h3>Teaching Assistant Experience</h3>
-<ul>
-  <li><strong>Communication Systems</strong></li>
-  <li><strong>Signals and Systems</strong></li>
-  <li><strong>Engineering Mathematics</strong></li>
-  <li><strong>Differential Equations</strong></li>
-  <li><strong>General Mathematics for Engineers I</strong></li>
-  <li><strong>General Mathematics for Engineers II</strong></li>
-</ul>
- </div>
-
-
-
-
-
-                
-
-                                      <div class="section" id="Awards-Grants">
-                                                <div class="section-title">Awards & Grants</div>
-                                                <hr> <!-- Horizontal line -->
-                                                 <ul>
-                                                 <!--<li><strong>Center for Wireless Communications, Oulu, Finland,</strong> postdoctoral grant, 2022, <strong>€22000</strong></li>-->
-                                                 <li><strong>Tauno Tönning Foundation</strong> personal grant for doctoral studies, 2021 (a competitive award for researchers in Finland)</li>
-                                                 <li><strong>Nokia Foundation</strong> personal grant for doctoral studies, 2020 (a competitive award for researchers in Finland)</li>
-                                                 <li><strong>HPY Research Foundation</strong> personal grant for doctoral studies, 2020  (a competitive award for researchers in Finland)</li>
-                                                 <li><strong>Riitta ja Jorma J. Takanen Foundation</strong> personal grant for doctoral studies, 2020 (a competitive award for researchers in Finland)</li>
-                                                 <li><strong>Finnish Foundation for Technology Promotion</strong> personal grant for doctoral studies, 2019 (a competitive award for researchers in Finland)</li>
-                                                <li>Recognition to the <strong>Ph.D. student with the highest accumulated JUFO</strong> in the University of Oulu, Finland, during 2019 and 2020</li>
-                                                <li>The <strong>best M.Sc. thesis</strong> at Tarbiat Modares University, 2016 (Selected Thesis - 2016)</li>
-                                                <li><strong>M.Sc. Ranked 1st</strong> among all Communications Engineering M.Sc. students of Tarbiat Modares University, Tehran, Iran</li>   
-                                                </ul>
-                                        </div>
-
-
-                                       <div class="section" id="Interests-Outside-of-Tech-section">
-                                              <div class="section-title"> </div>
-                                                 <hr> <!-- Horizontal line -->
-                                                   <!--   <p>In my spare time, I enjoy diving into Persian poetry. Whether it's the classics or more contemporary pieces,
-                                                         I find them fascinating. The way these poems express love, life, and deep thoughts is just beautiful. <a href="https://en.wikipedia.org/wiki/Hafez">Hafez</a> 
-                                                         in particular, holds a special place in my heart. To me, Persian poetry is like a treasure
-                                                         chest full of wisdom and inspiration that I like to explore whenever I get the chance.</p> -->
-                        
-                                        <!--Whenever I read their work, it's like I'm transported to a whole new world filled with emotions and profound ideas. 
-                                         It's not just about enjoying the language—it's also about feeling connected to Persian culture and its rich history.-->
-                        
-                                           </div>
-
-                 </div>
-
-
-
-                                
-                    <div id="journals-section" class="section" style="display: none;">
-                                            <div class="section-title">Mohammad Moltafet - Journals</div>
-                                            <hr> <!-- Horizontal line -->
-                                            <div class="secondary-info">
-                            <ol reversed>
-
-                                 <li><strong>M. Moltafet</strong>, H. R. Sadjadpour,  and Z. Rezki, ''An unconditionally secure encryption scheme for IoBT networks," <i> IEEE Internet of Things Journal, Early access, 2025.</i></li>
-                                <li>S. Sadeghi, A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Real-time tracking in a status update system with an imperfect feedback channel," <i>IEEE Transactions on Vehicular Technology, Early access, 2025.</i></li>
-
-                                <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, ''Goal-oriented remote tracking through correlated observations in pull-based communications," <i> IEEE Communications Letters, Early access, 2025.</i></li>          
-                                 <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Semantic-aware sampling and transmission in energy harvesting systems: A POMDP approach," <i> IEEE Transactions on Communications, vol. 73, no. 7, pp. 4898-4913, July 2025.[<a href="https://d197for5662m48.cloudfront.net/documents/publicationstatus/198029/preprint_pdf/96560ef365f52e549305c9d8a07e332f.pdf">pdf</a>]</i></li>           
-                                                
-                                <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "On the semantic security in the general bounded storage model: A new proof," <i>IEEE Transactions on Information Forensics and Security, vol. 19, pp. 4263-4271, Mar. 2024. [<a href="https://arxiv.org/pdf/2403.18935">pdf</a>]</i></li>
-                                <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and R. D. Yates, "Status update control and analysis under two-way delay," <i> IEEE/ACM Transactions on Networking, vol. 31, no. 6, pp. 2918-2933, Jan. 2024. [<a href="https://arxiv.org/pdf/2208.06177.pdf">pdf</a>]</i></li>
-                               
-                                <li>S. Sadeghi, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Multi-source AoI-constrained resource minimization under HARQ: Heterogeneous sampling processes," <i>IEEE Transactions on Vehicular Technology, vol. 73, no. 1, pp. 1084-1099, Jan. 2024.</i></li>
-                                <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Dynamic scheduling for minimizing AoI in resource-constrained multi-source relaying systems with stochastic arrivals," <i> IEEE Transactions on Wireless Communications, vol. 23, no. 1, pp. 450-466, Dec. 2023.[<a href="https://arxiv.org/pdf/2203.05656.pdf">pdf</a>]</i></li>
-                                 <li>S. Sadeghi, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "AoI analysis and optimization in systems with computations-intensive updates," <i>Journal of Communications and Networks, vol. 25, no. 5, pp. 585-597, Oct. 2023.</i></li>
-                                <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Query-age-optimal scheduling under sampling and transmission constraints," <i>IEEE Communications Letter, vol. 27, no. 4, pp. 1205-1209, Apr. 2023.</i></li>
-                                <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in multi-source M/G/1/1 queueing systems," <i>IEEE Transactions on Communications, vol. 70, no. 10, pp. 6503-6516, Oct. 2022. [<a href="https://arxiv.org/pdf/2201.10991">pdf</a>]</i></li> 
-                            
-                                <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and N. Pappas, "Power minimization for AoI of information constrained dynamic control in wireless sensor networks," <i>IEEE Transactions on Communications, vol. 70, no. 1, pp. 419-432, Jan. 2022.</i></li>
-                                <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in a two-source system with packet management," <i>IEEE Wireless Communications Letters, vol. 10, no. 4, pp. 882–886, Apr. 2021.</i></li>
-                                <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average AoI in multi-source systems with source-aware packet management," <i>IEEE Transactions on Communications, vol. 69, no. 2, pp. 1121–1133, Feb. 2021.</i></li>
-                                <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "On the age of information in multi-source queueing models," <i>IEEE Transactions on Communications, vol. 68, no. 8, pp. 5003–5017, May 2020.</i></li>
-                                <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Worst case age of information in wireless sensor networks: A multi-access channel," <i>IEEE Wireless Communications Letters, vol. 9, no. 3, pp. 321–325, Mar. 2020.</i></li>
-                                <li>A. Zakeri, <strong>M. Moltafet</strong>, and N. Mokari, "Joint radio resource allocation and SIC ordering in NOMA-based networks using submodularity and matching theory," <i>IEEE Transactions on Vehicular Technology, vol. 68, no. 10, pp. 9761-9773, Oct. 2019.</i></li>
-                                <li><strong>M. Moltafet</strong>, S. Parsaeefard, M. R. Javan, and N. Mokari, "Robust radio resource allocation in MISO-SCMA assisted C-RAN in 5G networks," <i>IEEE Transactions on Vehicular Technology, vol. 68, no. 6, pp. 5758-5768, Jun. 2019.</i></li>
-                                <li>A. Mokdad, P. Azmi, N. Mokari, <strong>M. Moltafet</strong>, and M. Ghaffari-Miab, "Cross-layer energy-efficient resource allocation in PD-NOMA based H-CRANs: Implementation via GPU," <i>IEEE Transactions on Mobile Computing, vol. 18, no. 6, pp. 1246-1259, 1 Jun. 2019.</i></li>
-                                <li><strong>M. Moltafet</strong>, Paeiz Azmi, Mohammad R Javan, Nader Mokari, and Ali Mokdad, "Optimal radio resource allocation to achieve a low BER in PD‐NOMA–based heterogeneous cellular networks," <i>Transactions on Emerging Telecommunications Technologies, vol. 30, no. 5, pp. 1-23, May 2019.</i></li>
-                                <li><strong>M. Moltafet</strong>, R. Joda, N. Mokari, M. R. Sabagh, and M. Zorzi, "Joint access and fronthaul radio resource allocation in PD-NOMA-based 5G networks enabling dual connectivity and CoMP," <i>IEEE Transactions on Communications, vol. 66, no. 12, pp. 6463-6477, Dec. 2018.</i></li>
-                                <li><strong>M. Moltafet</strong>, P. Azmi, N. Mokari, M. R. Javan, and A. Mokdad, "Optimal and fair energy-efficient resource allocation for energy harvesting-enabled-PD-NOMA-based HetNets," <i>IEEE Transactions on Wireless Communications, vol. 17, no. 3, pp. 2054-2067, Mar. 2018.</i></li>
-                                <li><strong>M. Moltafet</strong>, N. M. Yamchi, M. R. Javan, and P. Azmi, "Comparison study between PD-NOMA and SCMA," <i>IEEE Transactions on Vehicular Technology, vol. 67, no. 2, pp. 1830-1834, Feb. 2018.</i></li>
-                                <li><strong>M. Moltafet</strong>, N. Mokari, M. R. Javan, H. Saeedi, and H. Pishro-Nik, "A new multiple access technique for 5G: Power domain sparse code multiple access (PSMA)," <i>IEEE Access, vol. 6, pp. 747–759, Nov. 2017.</i></li>
-                                <li><strong>M. Moltafet</strong>, A.Mokdad, P. Azmi, and N. Mokari, "Radio resource allocation in PD-NOMA based HCN system considering CoMP technology," <i>International Journal of Digital Information and Wireless Communications. 8. pp. 260-264, 2017.</i></li>
-                                <li><strong>M. Moltafet</strong>, and P. Azmi, "Efficient resource allocation in NOMA-based HCN systems," <i>The Modares Journal of Electrical Engineering, vol. 15, no. 3, pp. 36–41, 2016.</i></li>
-                                <li><strong>M. Moltafet</strong>, and P. Azmi, "Resource allocation in SCMA-based system," <i>The Modares Journal of Electrical Engineering, vol. 15, no. 1, pp. 9–14, 2016.</i></li>
-                            </ol>
-                            
-                                </div>
-                    </div>
-
-
-
-            
-            <div id="conferences-section" class="section" style="display: none;">
-                                    <div class="section-title">Mohammad Moltafet - Conferences</div>
-                                    <hr> <!-- Horizontal line -->
-                        <div class="secondary-info">
-                         <ol reversed>
-                    
-                         <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, M. Codreanu, and Roy D. Yates, ''AoI in M/G/1/1 Gueues with Probabilistic Preemption," <i> in Proceedings of the IEEE International Symposium on Information Theory (ISIT), Michigan, USA, Jun. 22 -- 27, 2025, pp. 1-5.[<a href="https://arxiv.org/pdf/2502.00274">pdf</a>]</i></li>      
-                         <li>S. S. Vilni, A. Zakeri, <strong>M. Moltafet</strong>,  and M. Codreanu, "Real-time Tracking in Status Update Systems Under Imperfect Feedback: A Deep R-Learning Approach," <i>in Proceedings of the International Conference on Computer Communications (INFOCOM) Workshop, London, United Kingdom, May 19 -- 22, 2025.</i></li>              
-                         <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An unconditionally secure and non-malleable encryption scheme for cloud storage," <i> in Proceedings of the Annual Asilomar Conference on Signals, Systems and Computers, Paciﬁc Grove, USA, Oct. 27 -- 30, 2024.</i></li>
-                         <li>S. S. Vilni, A. Zakeri, <strong>M. Moltafet</strong>,  and M. Codreanu, "Goal-oriented real-time tracking in a status update system under imperfect feedback," <i>in Proceedings of the Annual Asilomar Conference on Signals, Systems and Computers, Paciﬁc Grove, USA, Oct. 27 -- 30, 2024.</i></li>
-                         <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An unconditionally secure encryption protocol for cloud storage," <i> in Proceedings of IEEE International Symposium on Information Theory (ISIT), Athens, Greece, Jul. 7-12, 2024.</i></li>
-                         <li>Abdulaziz Alatawi, H. R. Sadjadpour, and Z. Rezki, <strong>M. Moltafet</strong>, and AbdELRahman Elfikky, "Adaptive deep neural network for non-stationary wireless channels," <i> in Proceedings of International Conference on Wireless Networks and Mobile Communications (WINCOM), Leeds, West Yorkshire, England, Jul. 23-25, 2024.</i></li>
-                         <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Goal-oriented remote tracking of an unobservable multi-state Markov source," <i> in Proceedings of IEEE Wireless Communications and Networking Conference (WCNC), Dubai, United Arab Emirates, Apr. 21-24, 2024.</i></li>
-                         <li><strong>M. Moltafet</strong>, H. Sadjadpour, and Z. Rezki, "A Practical Perfect Secrecy Approach for IoBT Systems," <i>in Proceedings of IEEE Military Communications Conference (MILCOM), Boston, MA, USA, Oct. 30–Nov. 03, 2023.</i></li>
-                         <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Semantic-aware real-time tracking of a Markov source under sampling and transmission costs," <i>in Proceedings of the Annual Asilomar Conference on Signals, Systems and Computers, Pacific Grove, USA, Oct. 29-Nov 1, 2023.</i></li>
-                         <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Optimal semantic-aware sampling and transmission in energy harvesting systems through the AoII," <i>in Proceedings of the IEEE Global Communications Conference (GLOBECOM), Kuala Lumpur, Malaysia, 2023.</i></li>
-                         <li>S. S. Vilni, <strong>M. Moltafet</strong>, M. Leinonen and M. Codreanu, "AoI-Constrained Transmission Scheduling with HARQ and Heterogeneous Sampling Processes," <i>in Proceedings of the International Conference on Computer Communications (INFOCOM) Workshop, New York, USA, 2023.</i></li>
-                         <li>S. S. Vilni, <strong>M. Moltafet</strong>, M. Leinonen and M. Codreanu, "Average AoI Minimization in an HARQ-based Status Update System under Random Arrivals," <i>in Proceedings of the IEEE International Conference on Internet of Things and Intelligence Systems (IoTaIS), BALI, Indonesia, 2022, pp. 160-165.</i></li>
-                         <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "AoI in Source-Aware Preemptive M/G/1/1 Queueing Systems: Moment Generating Function," <i> in Proceedings of the IEEE International Symposium on Information Theory (ISIT), Helsinki, Finland, Jun. 26–Jul. 01, 2022, pp. 139-143.[<a href="https://arxiv.org/pdf/2201.10991.pdf">pdf</a>]</i></li>
-                         <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Minimizing the AoI in multi-Source two-Hop systems under an average resource constraint," <i> in Proceedings of the IEEE International Workshop on Signal Processing Advances in Wireless Communications (SPAWC), Helsinki, Finland, Jun. 2022.[<a href="https://arxiv.org/pdf/2203.05656.pdf">pdf</a>]</i></li>
-                         <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Moment generating function of the AoI in multi-source systems with computation-intensive status updates," <i>in Proceedings of the IEEE Information Theory Workshop (ITW), 2021, pp. 1-5.</i></li>
-                         <li>A. Zakeri, <strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Minimizing AoI in resource-constrained multi-source relaying systems with stochastic arrivals," <i>in Proceedings of the IEEE Global Communications Conference (GLOBECOM), 2021, pp. 1-5.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Source-aware packet management for computation-intensive status updating: MGF of the AoI," <i>in Proceedings of the International Symposium on Wireless Communication Systems, Berlin, Germany, Sept. 6–9, 2021, pp. 1-6.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "An exact expression for the average AoI in a multi-source M/M/1 queueing model," <i>in Proceedings of the IEEE International Symposium on Personal, Indoor, and Mobile Radio Communications, London, United Kingdom, Sep. 1–3, 2020, pp. 1-6.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average age of information in a multi-source M/M/1 queueing model with LCFS prioritized packet management," <i>in Proceedings of the International Conference on Computer Communications (INFOCOM) Workshop, Toronto, Canada, Jul. 6-9, 2020, pp. 303–308.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average age of information for a multi-source M/M/1 queueing model with packet management," <i>in Proceedings of the IEEE International Symposium on Information Theory, Los Angeles, CA, USA, Jun. 21–26, 2020, pp. 1765–1769.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average age of information for a multi-source M/M/1 queueing model with packet management and self-preemption in service," <i>in Proceedings of the International Symposium on Modeling and Optimization in Mobile, Ad Hoc, and Wireless Networks, Volos, Greece, Jun. 15–19 2020, pp. 1–5.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "An approximate expression for the average AoI in a multi-source M/G/1 queueing model," <i>in Proceedings of the IEEE 6G Wireless Summit (6G SUMMIT), Levi, Finland, Mar. 17–20, 2020, pp. 1–5.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, N. Pappas, "Power minimization in wireless sensor networks with constrained AoI using stochastic optimization," <i>in Proceedings of the Annual Asilomar Conference on Signals, Systems and Computers, Pacific Grove, USA, Nov. 3–6, 2019, pp. 406–410.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Closed-Form Expression for the Average Age of Information in a Multi-Source M/G/1 Queueing Model," <i>in Proceedings of the IEEE Information Theory Workshop (ITW), Visby, Sweden, Aug. 27–30, 2019, pp. 1-5.</i></li>
-                        <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Worst-case analysis of age of information in a shared-access channel," <i>in Proceedings of the IEEE International Symposium on Wireless Communication Systems, Oulu, Finland, Aug. 27–30, 2019, pp. 613–617.</i></li>
-                        <li>M. Jahandideh, <strong>M. Moltafet</strong>, M. Codreanu and M. Latva-Aho, "Low Complexity Sparse Channel Estimation for Wideband mmWave Systems: Multi-Stage Approach," <i>in Proceedings of the IEEE Wireless Communications and Networking Conference (WCNC), Marrakesh, Morocco, Apr. 15-18, 2019, pp. 1-6.</i></li>
-                        <li><strong>M. Moltafet</strong>, N. Mokari, R. Joda, M. R. Sabagh and M. Zorzi, "Joint access and fronthaul resource allocation in dual connectivity and CoMP based networks," <i>in Proceedings of the IEEE International Conference on Communications (ICC), Kansas City, MO, USA, May. 20-24, 2018, pp. 1-6.</i></li>
-                        <li>A. Mokdad, <strong>M. Moltafet</strong>, P. Azmi and N. Mokari, "Robust radio resource allocation for heterogeneous traffic in PD-NOMA-based HCNs," <i>in Proceedings of the IEEE Middle East and North Africa Communications Conference (MENACOMM), Jounieh, Lebanon, Apr. 18-20, 2018, pp. 1-6.</i></li>
-                        <li><strong>M. Moltafet</strong>, N. Mokari, M. R. Javan, H. Saeedi and H. Pishro-Nik, "PSMA for 5G: Network throughput analysis," <i>in Proceedings of the IEEE Annual International Symposium on Personal, Indoor, and Mobile Radio Communications (PIMRC), Montreal, QC, Canada, Oct. 8-13, 2017, pp. 1-6.</i></li>
-                        <li>A. Mokdad, <strong>M. Moltafet</strong>, P. Azmi and N. Mokari, "Robust radio resource allocation for heterogeneous traffic in PD-NOMA-based cellular systems," <i>in Proceedings of the IEEE Iranian Conference on Electrical Engineering (ICEE), Tehran, Iran, May, 2-7, 2017, pp. 1796-1801.</i></li>
-                        <li><strong>M. Moltafet</strong>, P. Azmi and N. Mokari, "Power minimization in 5G heterogeneous cellular networks," <i>in Proceedings of the IEEE Iranian Conference on Electrical Engineering (ICEE), Shiraz, Iran, May, 10-12, 2016, pp. 234-238.</i></li>
-                      </ol>
-                      </div>
-            </div>
-
-            
-                  <div id="book-chapter-section" class="section" style="display: none;">
-                            <div class="section-title">Mohammad Moltafet - Book Chapters and Academic Theses</div>
-                            <hr> <!-- Horizontal line -->
-                            <div class="secondary-info">
-                                <ol reversed>
-                           <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Timely status updating via packet management in multi-source systems," <i>Age of Information: Foundations and Applications,  Cambridge University Press, Jan. 2023.</i></li>
-                           <li><strong>M. Moltafet</strong>, Information Freshness in Wireless Networks, Ph.D. thesis, Centre for Wireless Communications, University of Oulu. <i>Acta Universitatis Ouluensis, Oulu, Finland, Jun. 2021.</i></li>
-                           <li><strong>M. Moltafet</strong>, Radio Resource Allocation in NOMA-based HCN systems, Master's thesis in Tarbiat Modares University, Tehran, Iran, <i>Sept. 2016.</i></li>
-                                  </ol>
-                            </div>
-                   </div>
-        </div>
-
+  </div>
 </div>
 
-
-    
-    <script>
-        function showHome() {
-            document.getElementById('home-section').style.display = 'block';
-            document.getElementById('about-me-section').style.display = 'none';
-            document.getElementById('journals-section').style.display = 'none';
-            document.getElementById('conferences-section').style.display = 'none';
-            document.getElementById('book-chapter-section').style.display = 'none';
-        }
-
-        function showAboutMe() {
-            document.getElementById('home-section').style.display = 'none';
-            document.getElementById('about-me-section').style.display = 'block';
-            document.getElementById('journals-section').style.display = 'none';
-            document.getElementById('conferences-section').style.display = 'none';
-            document.getElementById('book-chapter-section').style.display = 'none';
-        }
-
-        function showJournals() {
-            document.getElementById('home-section').style.display = 'none';
-            document.getElementById('about-me-section').style.display = 'none';
-            document.getElementById('journals-section').style.display = 'block';
-            document.getElementById('conferences-section').style.display = 'none';
-            document.getElementById('book-chapter-section').style.display = 'none';
-        }
-
-        function showConferences() {
-            document.getElementById('home-section').style.display = 'none';
-            document.getElementById('about-me-section').style.display = 'none';
-            document.getElementById('journals-section').style.display = 'none';
-            document.getElementById('conferences-section').style.display = 'block';
-            document.getElementById('book-chapter-section').style.display = 'none';
-        }
-
-        function showBookChapter() {
-            document.getElementById('home-section').style.display = 'none';
-            document.getElementById('about-me-section').style.display = 'none';
-            document.getElementById('journals-section').style.display = 'none';
-            document.getElementById('conferences-section').style.display = 'none';
-            document.getElementById('book-chapter-section').style.display = 'block';
-        }
-    </script>
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+    var target = document.getElementById('page-' + name);
+    if (target) target.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
 </body>
 </html>
