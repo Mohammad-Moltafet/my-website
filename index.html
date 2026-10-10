@@ -158,8 +158,25 @@
     }
 
     /* ── Responsive ── */
-@media (max-width: 680px) {
-      #menu-toggle { display: none; }
+    @media (max-width: 680px) {
+      #menu-toggle { display: block; }
+
+      #layout-menu {
+        position: fixed;
+        left: -240px;
+        top: 0;
+        z-index: 999;
+        transition: left 0.25s ease;
+      }
+
+      #layout-menu.open {
+        left: 0;
+      }
+
+      #layout-content {
+        width: 100%;
+        padding: 58px 16px 24px 16px;
+      }
     }
 
     
@@ -192,12 +209,12 @@
 
     <!-- Part 4: Students -->
     <div class="menu-category">Students</div>
-    <div class="menu-item"><a href="#" onclick="showPage('members');return false;" id="nav-members">Members</a></div>
+    <div class="menu-item"><a href="#" onclick="showPage('members');return false;" id="nav-members">Students &amp; Research Mentees</a></div>
 
     <!-- Part 5: Links -->
     <div class="menu-category"> Links</div>
     <div class="menu-item"><a href="https://scholar.google.com/citations?user=ksSr5bMAAAAJ&hl=en" target="_blank">Google Scholar</a></div>
-    <div class="menu-item"><a href="www.linkedin.com/in/mohammad-moltafet-a0a8a781" target="_blank">LinkedIn</a></div>
+    <div class="menu-item"><a href="https://www.linkedin.com/in/mohammad-moltafet-a0a8a781" target="_blank">LinkedIn</a></div>
     <div class="menu-item"><a href="https://www.researchgate.net/profile/Mohammad-Moltafet?ev=hdr_xprf" target="_blank">Research Gate</a></div>
 
   </div><!-- /sidebar -->
@@ -228,6 +245,13 @@
         <a href="mailto:mmoltafet@tntech.edu">contact me</a></strong>.
       </div> -->
 
+      <h2>News</h2>
+      <ul>
+        <li><strong>August 2026:</strong> Joined the Department of Electrical and Computer Engineering at Tennessee Tech University as an Assistant Professor.</li>
+        <li><strong>July 2026:</strong> Our paper "Status updating in two-way delay systems with preemption" was published in <em>IEEE Communications Letters</em>.</li>
+        <li><strong>May 2026:</strong> Our paper "Real-time tracking in a status update system with an imperfect feedback channel" was published in <em>IEEE Transactions on Vehicular Technology</em>.</li>
+      </ul>
+
       <h2>Research Interests</h2>
       <ul>
         <li><strong>Semantic communications</strong> with special emphasis on information freshness, goal-oriented communications, and real-time remote tracking</li>
@@ -242,6 +266,8 @@
 
       <h2>Selected Publications</h2>
       <ul style="list-style-type: square;">
+        <li>J. Yang, <strong>M. Moltafet</strong>, and H. R. Sadjadpour, "Status updating in two-way delay systems with preemption," <em>IEEE Communications Letters, vol. 30, pp. 2690–2694, Jul. 2026.</em></li>
+        <li>S. Sadeghi, A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Real-time tracking in a status update system with an imperfect feedback channel," <em>IEEE Transactions on Vehicular Technology, vol. 75, no. 5, pp. 8064–8079, May 2026.</em></li>
         <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, Z. Rezki, M. Codreanu, and R. D. Yates, "AoI in M/G/1/1 Queues with Probabilistic Preemption," <em>Proc. IEEE ISIT, Michigan, USA, Jun. 2025.</em> [<a href="https://arxiv.org/pdf/2502.00274" target="_blank">pdf</a>]</li>
         <li><strong>M. Moltafet</strong>, H. R. Sadjadpour, and Z. Rezki, "An unconditionally secure encryption scheme for IoBT networks," <em>IEEE Internet of Things Journal, Early access, 2025.</em></li>
         <li>A. Zakeri, <strong>M. Moltafet</strong>, and M. Codreanu, "Semantic-aware sampling and transmission in energy harvesting systems: A POMDP approach," <em>IEEE Trans. Commun., vol. 73, no. 7, pp. 4898–4913, Jul. 2025.</em> [<a href="https://d197for5662m48.cloudfront.net/documents/publicationstatus/198029/preprint_pdf/96560ef365f52e549305c9d8a07e332f.pdf" target="_blank">pdf</a>]</li>
@@ -252,9 +278,6 @@
         <li><strong>M. Moltafet</strong>, M. Leinonen, M. Codreanu, and N. Pappas, "Power minimization for AoI of information constrained dynamic control in wireless sensor networks," <em>IEEE Trans. Commun., vol. 70, no. 1, pp. 419–432, Jan. 2022.</em></li>
         <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "Average AoI in multi-source systems with source-aware packet management," <em>IEEE Trans. Commun., vol. 69, no. 2, pp. 1121–1133, Feb. 2021.</em></li>
         <li><strong>M. Moltafet</strong>, M. Leinonen, and M. Codreanu, "On the age of information in multi-source queueing models," <em>IEEE Trans. Commun., vol. 68, no. 8, pp. 5003–5017, May 2020.</em></li>
-        <li><strong>M. Moltafet</strong>, R. Joda, N. Mokari, M. R. Sabagh, and M. Zorzi, "Joint access and fronthaul radio resource allocation in PD-NOMA-based 5G networks enabling dual connectivity and CoMP," <em>IEEE Trans. Commun., vol. 66, no. 12, pp. 6463–6477, Dec. 2018.</em></li>
-        <li><strong>M. Moltafet</strong>, P. Azmi, N. Mokari, M. R. Javan, and A. Mokdad, "Optimal and fair energy-efficient resource allocation for energy harvesting-enabled-PD-NOMA-based HetNets," <em>IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2054–2067, Mar. 2018.</em></li>
-        <li><strong>M. Moltafet</strong>, N. M. Yamchi, M. R. Javan, and P. Azmi, "Comparison study between PD-NOMA and SCMA," <em>IEEE Trans. Veh. Technol., vol. 67, no. 2, pp. 1830–1834, Feb. 2018.</em></li>
       </ul>
       <!-- <div class="footer">Page last updated August 2026.</div> -->
     </div>
@@ -266,7 +289,7 @@
       <p style="font-size:15px;">I received my Ph.D. in Communications Engineering from the University of Oulu, Finland, 
         in 2021. During my doctoral studies, I was a Visiting Ph.D. Researcher at Linköping University, Sweden, in 2019. 
         I subsequently worked as a Postdoctoral Researcher at the University of Oulu and the Technical University of Munich 
-        (TUM), Germany, in 2021 and 2022, respectively. Before joining Tennessee Tech University, I was an Assistant Adjunct
+        (TUM), Germany, in 2021 and 2022, respectively. Before joining Tennessee Tech University in August 2026, I was an Assistant Adjunct
         Professor at the University of California, Santa Cruz. I am currently an Assistant Professor in the Department of 
         Electrical and Computer Engineering at Tennessee Tech University.</p>
 
@@ -280,7 +303,7 @@
         <li><strong>Cybersecurity</strong> with special emphasis on information-theoretic security, multi-party communications in IoT systems, data storage, and federated learning</li>
 
       </ul>
-      <p style="font-size:15px;">The core theoretical background required for carrying out successful research in these fast-developing fields is formed by: <strong>Communication Theory and Networking</strong>, <strong>Mathematical Optimization</strong>, <strong>Information Theory</strong>, <strong>Machine Learning</strong>, <strong>Probability Theory</strong>, <strong>Queuing Theory</strong>, <strong>Signal Processing</strong>, and <strong>Number Theory</strong>.</p>
+      <p style="font-size:15px;">The core theoretical background required for carrying out successful research in these fast-developing fields is formed by: <strong>Communication Theory and Networking</strong>, <strong>Mathematical Optimization</strong>, <strong>Information Theory</strong>, <strong>Machine Learning</strong>, <strong>Probability Theory</strong>, <strong>Queueing Theory</strong>, <strong>Signal Processing</strong>, and <strong>Number Theory</strong>.</p>
 
       <h2>Awards &amp; Grants</h2>
       <ul>
@@ -425,10 +448,9 @@
     </div>
 
 
-
 <!-- ══ MEMBERS (Students and Research Mentees) ══ -->
 <div id="page-members" class="page">
-  <h1>Mohammad Moltafet &ndash; Members</h1>
+  <h1>Mohammad Moltafet &ndash; Students and Research Mentees</h1>
 
   <h2>Students and Research Mentees</h2>
   <ul>
